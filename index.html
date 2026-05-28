@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyce Chan 詹芷菱 | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d1b2a; --navy2: #1b2e4b;
+      --blue: #2563eb; --blue-light: #3b82f6; --sky: #38bdf8; --accent: #6366f1;
+      --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0;
+      --gray-400: #94a3b8; --gray-600: #475569; --text: #0f172a;
+      --radius: 16px; --shadow: 0 4px 24px rgba(0,0,0,0.08); --shadow-lg: 0 16px 48px rgba(0,0,0,0.14);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', 'Noto Sans TC', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--gray-100); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.1rem 2.5rem; display: flex; align-items: center; justify-content: space-between; transition: background 0.3s, box-shadow 0.3s; }
+    nav.scrolled { background: rgba(255,255,255,0.96); box-shadow: 0 2px 16px rgba(0,0,0,0.07); backdrop-filter: blur(12px); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); transition: color 0.3s; }
+    nav.scrolled .nav-logo { color: var(--navy); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    nav.scrolled .nav-links a { color: var(--gray-600); }
+    .nav-links a:hover { color: var(--sky); }
+    nav.scrolled .nav-links a:hover { color: var(--blue); }
+    .nav-cta { padding: 0.45rem 1.2rem; background: var(--blue); color: var(--white) !important; border-radius: 999px; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--blue-light) !important; transform: translateY(-1px); color: var(--white) !important; }
+
+    /* HERO */
+    #hero { min-height: 100vh; background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 55%, #1a3a6b 100%); position: relative; overflow: hidden; display: flex; align-items: center; }
+    .hero-orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); opacity: 0.25; }
+    .hero-orb-1 { width: 500px; height: 500px; top: -80px; right: -60px; background: #2563eb; }
+    .hero-orb-2 { width: 320px; height: 320px; bottom: 40px; left: -60px; background: #6366f1; }
+    .hero-orb-3 { width: 180px; height: 180px; top: 45%; left: 38%; background: #38bdf8; }
+    .hero-container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 7rem 2.5rem 4rem; display: grid; grid-template-columns: 1fr 420px; gap: 5rem; align-items: center; }
+    .hero-text { position: relative; z-index: 1; }
+    .hero-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 4.8rem); font-weight: 700; line-height: 1.08; color: var(--white); margin-bottom: 0.4rem; }
+    h1 .en-name { display: block; font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 400; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 0.3rem; }
+    .hero-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.58); margin: 1.5rem 0; font-weight: 300; line-height: 1.8; max-width: 440px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
+    .tag { padding: 0.28rem 0.85rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; color: rgba(255,255,255,0.68); font-size: 0.78rem; font-weight: 500; background: rgba(255,255,255,0.05); }
+    .hero-ctas { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+    .btn-primary { padding: 0.8rem 2rem; background: var(--blue); color: var(--white); border-radius: 999px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 20px rgba(37,99,235,0.4); transition: transform 0.2s, box-shadow 0.2s, background 0.2s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,99,235,0.5); background: var(--blue-light); }
+    .btn-outline { padding: 0.8rem 2rem; border: 1.5px solid rgba(255,255,255,0.28); color: var(--white); border-radius: 999px; font-weight: 500; font-size: 0.95rem; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+    .btn-outline:hover { border-color: var(--sky); color: var(--sky); transform: translateY(-2px); }
+    .hero-photo { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; }
+    .photo-ring { position: relative; width: 380px; height: 380px; flex-shrink: 0; }
+    .photo-ring::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(from 0deg, var(--blue), var(--sky), var(--accent), var(--blue)); animation: spin 7s linear infinite; }
+    .photo-ring::after { content: ''; position: absolute; inset: -2px; border-radius: 50%; background: var(--navy); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .photo-img { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; }
+    .floating-badge { position: absolute; background: rgba(255,255,255,0.95); border-radius: 12px; padding: 0.55rem 1rem; font-size: 0.8rem; font-weight: 600; color: var(--navy); box-shadow: 0 8px 24px rgba(0,0,0,0.15); white-space: nowrap; backdrop-filter: blur(8px); }
+    .fb-1 { top: 10px; left: -55px; animation: float1 3.2s ease-in-out infinite; }
+    .fb-2 { bottom: 30px; right: -45px; animation: float2 3.8s ease-in-out infinite; }
+    .fb-3 { bottom: 130px; left: -60px; animation: float1 4.5s ease-in-out infinite; }
+    .fb-4 { top: 75px; right: -55px; animation: float2 4.1s ease-in-out infinite; }
+    .fb-5 { bottom: 230px; left: -65px; animation: float1 5s ease-in-out infinite; }
+    @keyframes float1 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes float2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+    .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.35); font-size: 0.72rem; letter-spacing: 0.08em; animation: bounce 2.2s ease-in-out infinite; }
+    .scroll-hint::after { content: '↓'; font-size: 1rem; }
+    @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+    /* SECTION COMMON */
+    section { padding: 5.5rem 2.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3vw, 2.7rem); font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 1rem; }
+    .section-desc { color: var(--gray-600); font-size: 1rem; max-width: 580px; line-height: 1.8; margin-bottom: 3.5rem; }
+
+    /* ABOUT */
+    #about { background: var(--gray-50); }
+    .about-grid { display: grid; grid-template-columns: 360px 1fr; gap: 5rem; align-items: start; }
+    .about-photo-wrap { position: relative; }
+    .about-photo-wrap img { border-radius: 24px; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top; box-shadow: var(--shadow-lg); }
+    .about-photo-accent { position: absolute; bottom: -16px; right: -16px; width: 100px; height: 100px; background: linear-gradient(135deg, var(--blue), var(--accent)); border-radius: 20px; z-index: -1; }
+    .about-text p { color: var(--gray-600); line-height: 1.9; margin-bottom: 1.1rem; font-size: 0.98rem; }
+    .about-text p strong { color: var(--navy); }
+    .strength-pillars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; margin-top: 1.75rem; }
+    .sp { padding: 1.1rem; background: var(--white); border-radius: 14px; border: 1px solid var(--gray-200); border-top: 3px solid var(--blue); }
+    .sp-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); opacity: 0.35; line-height: 1; margin-bottom: 0.35rem; }
+    .sp-title { font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .sp-desc { font-size: 0.74rem; color: var(--gray-400); line-height: 1.55; }
+    .traits-row { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.5rem; }
+    .trait-chip { padding: 0.3rem 0.85rem; border-radius: 999px; font-size: 0.78rem; font-weight: 500; border: 1px solid; }
+    .trait-chip.blue { background: #eff6ff; color: var(--blue); border-color: #bfdbfe; }
+    .trait-chip.indigo { background: #eef2ff; color: #4338ca; border-color: #c7d2fe; }
+    .trait-chip.teal { background: #f0fdfa; color: #0d9488; border-color: #99f6e4; }
+    .trait-chip.rose { background: #fff1f2; color: #e11d48; border-color: #fecdd3; }
+    .trait-chip.amber { background: #fffbeb; color: #d97706; border-color: #fde68a; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--white); }
+    .timeline { position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--blue), rgba(37,99,235,0.1)); }
+    .tl-item { position: relative; padding-left: 2.25rem; margin-bottom: 1.25rem; opacity: 0; transform: translateX(-16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .tl-item.visible { opacity: 1; transform: translateX(0); }
+    .tl-dot { position: absolute; left: -5px; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: var(--blue); border: 2.5px solid var(--white); box-shadow: 0 0 0 2px var(--blue); }
+    .tl-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s; }
+    .tl-card:hover { border-color: #bfdbfe; box-shadow: var(--shadow); }
+    .tl-card-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; cursor: pointer; gap: 1rem; user-select: none; }
+    .tl-header-left { flex: 1; }
+    .tl-company { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.2rem; }
+    .tl-role { font-size: 1rem; font-weight: 600; color: var(--navy); }
+    .tl-header-right { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+    .tl-date { font-size: 0.75rem; color: var(--gray-400); font-weight: 500; background: var(--gray-200); padding: 0.18rem 0.65rem; border-radius: 999px; }
+    .tl-toggle { width: 28px; height: 28px; border-radius: 50%; background: var(--white); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--gray-400); transition: transform 0.3s, color 0.2s, background 0.2s; flex-shrink: 0; }
+    .tl-card.open .tl-toggle { transform: rotate(45deg); color: var(--blue); background: #eff6ff; }
+    .tl-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
+    .tl-body-inner { padding: 1.25rem 1.5rem 1.5rem; border-top: 1px solid var(--gray-200); }
+    .tl-bullets li { font-size: 0.88rem; color: var(--gray-600); padding: 0.2rem 0 0.2rem 1.1rem; position: relative; line-height: 1.65; }
+    .tl-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--blue-light); }
+    .card-media { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+    .card-video-wrap { position: relative; padding-top: 56.25%; border-radius: 12px; overflow: hidden; background: #000; }
+    .card-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .card-link-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.1rem; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 999px; font-size: 0.8rem; font-weight: 600; color: var(--navy); transition: background 0.2s; align-self: flex-start; }
+    .card-link-btn:hover { background: var(--gray-200); }
+    .card-link-btn::after { content: '↗'; color: var(--blue-light); }
+    .result-tag { display: inline-flex; align-items: center; padding: 0.3rem 0.75rem; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 999px; font-size: 0.78rem; font-weight: 600; color: var(--blue); margin-right: 0.5rem; margin-top: 0.5rem; }
+
+    /* PROJECTS */
+    #projects { background: var(--gray-50); }
+    .proj-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .pf-btn { padding: 0.45rem 1.1rem; border-radius: 999px; font-size: 0.82rem; font-weight: 500; cursor: pointer; border: 1px solid var(--gray-200); background: var(--white); color: var(--gray-600); transition: all 0.2s; }
+    .pf-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .pf-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.75rem; }
+    .proj-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 20px; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; display: flex; flex-direction: column; }
+    .proj-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: #bfdbfe; }
+    .proj-embed-wrap { position: relative; padding-top: 56.25%; }
+    .proj-embed-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .proj-cover { height: 160px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .proj-cover-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem 1rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .cv-ms { background: linear-gradient(135deg, #0f3460, #16213e); }
+    .cv-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    .cv-bio { background: linear-gradient(135deg, #064e3b, #065f46); }
+    .cv-chat { background: linear-gradient(135deg, #4338ca, #7c3aed); }
+    .cv-ml { background: linear-gradient(135deg, #1e3a5f, #2563eb); }
+    .cv-ui { background: linear-gradient(135deg, #0e7490, #38bdf8); }
+    .cv-rail { background: linear-gradient(135deg, #92400e, #d97706); }
+    .cv-recruit { background: linear-gradient(135deg, #1f2937, #374151); }
+    .cv-esg { background: linear-gradient(135deg, #14532d, #166534); }
+    .cv-biz { background: linear-gradient(135deg, #7c2d12, #c2410c); }
+    .proj-cover-inner { text-align: center; color: var(--white); z-index: 1; position: relative; padding: 1rem; }
+    .proj-cover-icon { font-size: 0; width: 48px; height: 48px; margin: 0 auto 0.5rem; }
+    .proj-cover-stat { font-size: 1.8rem; font-weight: 700; font-family: 'Playfair Display', serif; }
+    .proj-cover-sub { font-size: 0.75rem; opacity: 0.8; }
+    .proj-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .proj-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.35rem; }
+    .proj-title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.35; }
+    .proj-desc { font-size: 0.84rem; color: var(--gray-600); line-height: 1.65; flex: 1; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; }
+    .proj-tag { padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 500; background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); }
+    .proj-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--gray-100); }
+    .proj-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.8rem; font-weight: 600; color: var(--blue); transition: gap 0.2s; }
+    .proj-link:hover { gap: 0.5rem; }
+    .proj-link::after { content: '↗'; }
+    .proj-result { font-size: 0.75rem; font-weight: 700; color: var(--gray-400); }
+    .award-badge { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.2rem 0.6rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 999px; font-size: 0.7rem; font-weight: 700; color: #d97706; }
+
+    /* SKILLS */
+    #skills { background: var(--white); }
+    .skills-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .expertise-cloud { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .exp-tag { padding: 0.45rem 1.1rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; transition: transform 0.2s, box-shadow 0.2s; cursor: default; border: 1px solid; }
+    .exp-tag:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .exp-tag.blue { background: #eff6ff; color: var(--blue); border-color: #bfdbfe; }
+    .exp-tag.purple { background: #f5f3ff; color: var(--accent); border-color: #c4b5fd; }
+    .exp-tag.green { background: #f0fdf4; color: #16a34a; border-color: #bbf7d0; }
+    .exp-tag.orange { background: #fff7ed; color: #ea580c; border-color: #fed7aa; }
+    .skill-bars { display: flex; flex-direction: column; gap: 1.5rem; }
+    .skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 0.45rem; }
+    .skill-name { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
+    .skill-pct { font-size: 0.85rem; font-weight: 700; color: var(--blue); }
+    .skill-track { height: 7px; background: var(--gray-200); border-radius: 999px; overflow: hidden; }
+    .skill-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), var(--sky)); border-radius: 999px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+    .cert-note { font-size: 0.7rem; color: var(--gray-400); margin-top: 0.2rem; }
+
+    /* EDUCATION */
+    #education { background: var(--gray-50); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .edu-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 20px; padding: 2rem; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--accent)); }
+    .edu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .edu-school { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+    .edu-period { font-size: 0.75rem; color: var(--blue); font-weight: 600; margin-bottom: 1rem; }
+    .edu-programs { display: flex; flex-direction: column; gap: 0.45rem; }
+    .edu-program { font-size: 0.86rem; color: var(--gray-600); padding: 0.35rem 0.7rem; background: var(--gray-50); border-radius: 8px; border: 1px solid var(--gray-100); }
+    .lang-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+    .lang-item { display: flex; align-items: center; gap: 0.75rem; background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 0.75rem 1.25rem; transition: transform 0.2s; }
+    .lang-item:hover { transform: translateY(-2px); }
+    .lang-flag { font-size: 1.5rem; }
+    .lang-name { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
+    .lang-level { font-size: 0.75rem; color: var(--gray-400); }
+
+    /* ACTIVITIES */
+    #activities { background: var(--white); }
+    .activities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .act-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 20px; padding: 2rem; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .act-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .act-card.teal::before { background: linear-gradient(90deg, #0d9488, #38bdf8); }
+    .act-card.rose::before { background: linear-gradient(90deg, #e11d48, #f97316); }
+    .act-card.indigo::before { background: linear-gradient(90deg, #4338ca, #6366f1); }
+    .act-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .act-type { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 0.25rem; }
+    .act-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+    .act-period { font-size: 0.75rem; color: var(--blue); font-weight: 600; margin-bottom: 0.75rem; }
+    .act-desc { font-size: 0.85rem; color: var(--gray-600); line-height: 1.72; }
+    .act-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+    .act-tag { padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 500; background: var(--white); color: var(--gray-600); border: 1px solid var(--gray-200); }
+
+    /* CONTACT */
+    #contact { background: linear-gradient(135deg, var(--navy), var(--navy2)); }
+    #contact .section-label { color: var(--sky); }
+    #contact h2 { color: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.9rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); color: var(--white); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+    .contact-item:hover { background: rgba(255,255,255,0.1); border-color: rgba(56,189,248,0.35); transform: translateX(4px); }
+    .ci-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+    .ci-val { font-size: 0.88rem; font-weight: 500; }
+    .contact-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: center; }
+    .contact-box p { color: rgba(255,255,255,0.6); font-size: 0.93rem; line-height: 1.75; margin-bottom: 1.5rem; }
+    .btn-email { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2.5rem; background: linear-gradient(135deg, var(--blue), var(--accent)); color: var(--white); border-radius: 999px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 8px 24px rgba(37,99,235,0.4); transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-email:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,99,235,0.55); }
+
+    footer { padding: 1.75rem; text-align: center; background: #060e1a; color: rgba(255,255,255,0.25); font-size: 0.78rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; padding-top: 6rem; }
+      .hero-text { order: 2; } .hero-photo { order: 1; }
+      .photo-ring { width: 280px; height: 280px; }
+      .hero-subtitle { margin: 1.25rem auto; }
+      .hero-tags, .hero-ctas { justify-content: center; }
+      .fb-1 { left: 0; top: -10px; } .fb-2 { right: 0; bottom: 10px; } .fb-3 { display: none; } .fb-4 { display: none; } .fb-5 { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo-wrap { max-width: 320px; margin: 0 auto; }
+      .strength-pillars { grid-template-columns: 1fr; }
+      .skills-wrap { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .activities-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 1.25rem; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .photo-ring { width: 240px; height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Joyce.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-container">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Business × Data × Marketing</div>
+      <h1>詹芷菱<span class="en-name">Joyce Chan</span></h1>
+      <p class="hero-subtitle">在想法和落地之間找到節奏的人。<br>喜歡把複雜的事情說清楚，把模糊的目標做出來。</p>
+      <div class="hero-tags">
+        <span class="tag">東吳大學 BBA</span>
+        <span class="tag">Data Science Minor</span>
+        <span class="tag">Campus Ambassador × 5</span>
+        <span class="tag">TOEIC 795</span>
+        <span class="tag">Python SSE 認證</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="resume.pdf" target="_blank" class="btn-primary">下載履歷</a>
+        <a href="#contact" class="btn-outline">聯繫我</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-ring">
+        <img src="photo.jpg" alt="Joyce Chan" class="photo-img">
+      </div>
+      <div class="floating-badge fb-1">目標導向</div>
+      <div class="floating-badge fb-2">跨域整合者</div>
+      <div class="floating-badge fb-3">行動力強</div>
+      <div class="floating-badge fb-4">創意思維</div>
+      <div class="floating-badge fb-5">數據導向</div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <img src="photo2.jpg" alt="Joyce Chan">
+        <div class="about-photo-accent"></div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">About Me</p>
+        <h2>實踐者，<br>也是整合者</h2>
+        <p>我是詹芷菱（Joyce），東吳大學企管系學生，同時念資料科學輔系，修了金融科技和跨域創新創業的學程。這個組合不是設計出來的，而是在實際做事的過程中，逐漸發現自己需要這幾個維度才能把問題看得更完整。</p>
+        <p>從高三開始自己經營代購品牌，到在商業分析社擔任副社長並接下<strong>台灣知名球隊企業合作專案</strong>擔任組長，再到在 Microsoft 執行觸及十萬人的跨校行銷計劃——我習慣把不確定的事情拆開來想清楚，再帶著大家一起做。不怕複雜，比較怕什麼都不做。</p>
+        <div class="strength-pillars">
+          <div class="sp">
+            <div class="sp-num">01</div>
+            <div class="sp-title">數據驅動，執行到底</div>
+            <div class="sp-desc">將分析結果應用於實務，招募流程優化使轉換率從 69% 升至 91%</div>
+          </div>
+          <div class="sp">
+            <div class="sp-num">02</div>
+            <div class="sp-title">內容行銷，全程操刀</div>
+            <div class="sp-desc">五間企業校園大使，從企劃、短影音剪輯到圖文製作全流程實戰</div>
+          </div>
+          <div class="sp">
+            <div class="sp-num">03</div>
+            <div class="sp-title">領導協作，國際視野</div>
+            <div class="sp-desc">四次專題組長，赴日國際交流，AIT 模擬外交談判，跨文化協作經驗</div>
+          </div>
+        </div>
+        <div class="traits-row">
+          <span class="trait-chip blue">行動導向</span>
+          <span class="trait-chip indigo">跨域整合</span>
+          <span class="trait-chip teal">數據思維</span>
+          <span class="trait-chip rose">創意力強</span>
+          <span class="trait-chip amber">團隊協作</span>
+          <span class="trait-chip blue">溝通說服</span>
+          <span class="trait-chip indigo">自驅學習</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <h2>工作與實踐經歷</h2>
+    <p class="section-desc">點擊展開每段經歷，了解實際參與的成果。</p>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" id="card-ms">
+          <div class="tl-card-header" onclick="toggle('card-ms')">
+            <div class="tl-header-left">
+              <div class="tl-company">Microsoft</div>
+              <div class="tl-role">Campus Ambassador・第五屆微接班人</div>
+            </div>
+            <div class="tl-header-right">
+              <div class="tl-date">2025.12 — 2026.05</div>
+              <div class="tl-toggle">+</div>
+            </div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-body-inner">
+              <ul class="tl-bullets">
+                <li>擔任 <strong>Mi Signal 專案組組長</strong>，帶領跨校團隊以長短影音策略推廣 Microsoft 實習計劃</li>
+                <li>執行 <strong>Copilot 校園推廣跨校專案</strong>，主貼文觸及超過 <strong>100,000 人次</strong></li>
+                <li>統籌校園推廣策略，整合線上線下管道，使更多大學生認識 Microsoft Copilot</li>
+              </ul>
+              <div class="card-media">
+                <div>
+                  <span class="result-tag">100K+ 觸及</span>
+                  <span class="result-tag">Mi Signal 專案</span>
+                </div>
+                <div class="card-video-wrap">
+                  <iframe src="https://www.youtube.com/embed/NA5i2wBQzCE" title="Mi Signal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <a href="https://www.instagram.com/p/DXmJPb-CRnE/" target="_blank" class="card-link-btn">查看 Copilot 主貼文（IG）</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" id="card-scu">
+          <div class="tl-card-header" onclick="toggle('card-scu')">
+            <div class="tl-header-left">
+              <div class="tl-company">東吳大學商業分析社</div>
+              <div class="tl-role">副社長・人資長・專案組組長</div>
+            </div>
+            <div class="tl-header-right">
+              <div class="tl-date">2025.07 — Present</div>
+              <div class="tl-toggle">+</div>
+            </div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-body-inner">
+              <ul class="tl-bullets">
+                <li>擔任<strong>人資長</strong>，重新設計招募標準並舉辦說明會，<strong>社員轉換率從 69% 提升至 91%</strong></li>
+                <li>擔任<strong>副社長</strong>，負責社團整體營運與跨部門協調，主導策略規劃方向</li>
+                <li>擔任<strong>專案組組長</strong>，主持每週會議，規劃團隊分工與數據分析流程</li>
+              </ul>
+              <div class="card-media">
+                <span class="result-tag">轉換率 +22pp</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" id="card-asus">
+          <div class="tl-card-header" onclick="toggle('card-asus')">
+            <div class="tl-header-left">
+              <div class="tl-company">ASUS × Dcard</div>
+              <div class="tl-role">Campus Ambassador</div>
+            </div>
+            <div class="tl-header-right">
+              <div class="tl-date">2025.07 — Present</div>
+              <div class="tl-toggle">+</div>
+            </div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-body-inner">
+              <ul class="tl-bullets">
+                <li>執行圖文內容行銷企劃與素材製作，有效傳播 ASUS 筆電產品特色與優勢</li>
+                <li>參與 Dcard 實戰工作坊，接受短影音專業課程培訓，強化內容製作能力</li>
+                <li>具備從靜態圖文到動態短影音的全面內容創作能力</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" id="card-tw">
+          <div class="tl-card-header" onclick="toggle('card-tw')">
+            <div class="tl-header-left">
+              <div class="tl-company">鼎碩創新</div>
+              <div class="tl-role">Campus Ambassador</div>
+            </div>
+            <div class="tl-header-right">
+              <div class="tl-date">2025.07 — 2025.08</div>
+              <div class="tl-toggle">+</div>
+            </div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-body-inner">
+              <ul class="tl-bullets">
+                <li>實地參訪台中豐原多間工廠，執行品牌年輕化推廣任務</li>
+                <li>為<strong>宗松鋁業</strong>從零發想並執行社群行銷企劃，規劃 IG Reels 腳本並親自進廠完成拍攝與發布</li>
+                <li>成功讓年輕世代看見製造業潛力，社群行銷<strong>較去年成長 20%</strong></li>
+              </ul>
+              <div class="card-media">
+                <span class="result-tag">社群成長 +20%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" id="card-td">
+          <div class="tl-card-header" onclick="toggle('card-td')">
+            <div class="tl-header-left">
+              <div class="tl-company">台灣數位外交協會</div>
+              <div class="tl-role">Campus Ambassador</div>
+            </div>
+            <div class="tl-header-right">
+              <div class="tl-date">2025.04 — 2025.08</div>
+              <div class="tl-toggle">+</div>
+            </div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-body-inner">
+              <ul class="tl-bullets">
+                <li>參與「公民外交行動特展」，深入了解青年行動力與媒體影響力在國際外交的應用</li>
+                <li>受邀前往 <strong>American Institute In Taiwan（AIT）</strong>，全程以英文參與外交談判模擬工作坊</li>
+                <li>提升跨文化溝通能力與國際視野，強化從不同角度思考問題的能力</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" id="card-sb">
+          <div class="tl-card-header" onclick="toggle('card-sb')">
+            <div class="tl-header-left">
+              <div class="tl-company">Study bar</div>
+              <div class="tl-role">Campus Ambassador</div>
+            </div>
+            <div class="tl-header-right">
+              <div class="tl-date">2025.04 — 2025.10</div>
+              <div class="tl-toggle">+</div>
+            </div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-body-inner">
+              <ul class="tl-bullets">
+                <li>每月規律產出短影音及圖文內容，透過社群媒體擴散讓更多學生認識留學 App</li>
+                <li>精進短影音腳本企劃與製作，展現將品牌概念轉化為高傳播性數位內容的能力</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" id="card-shop">
+          <div class="tl-card-header" onclick="toggle('card-shop')">
+            <div class="tl-header-left">
+              <div class="tl-company">海外代購品牌</div>
+              <div class="tl-role">創辦人 Owner</div>
+            </div>
+            <div class="tl-header-right">
+              <div class="tl-date">2023.05 — Present</div>
+              <div class="tl-toggle">+</div>
+            </div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-body-inner">
+              <ul class="tl-bullets">
+                <li>自創品牌，獨立經營 LINE 與 IG 粉絲專頁，統籌行銷計劃、廣告視覺設計與投放</li>
+                <li>透過禮品贈送與滿額折扣策略提升顧客回購率，落實精簡永續包裝</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Projects</p>
+    <h2>精選專案</h2>
+    <p class="section-desc">橫跨行銷影音、數據分析、商業策略與 AI 應用的完整實作成果。</p>
+
+    <div class="proj-filter">
+      <button class="pf-btn active" data-filter="all">All</button>
+      <button class="pf-btn" data-filter="marketing">行銷影音</button>
+      <button class="pf-btn" data-filter="data">數據分析</button>
+      <button class="pf-btn" data-filter="strategy">商業策略</button>
+      <button class="pf-btn" data-filter="ai">AI 應用</button>
+      <button class="pf-btn" data-filter="intl">國際專案</button>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Mi Signal -->
+      <div class="proj-card" data-category="marketing">
+        <div class="proj-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/NA5i2wBQzCE" title="Mi Signal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">Microsoft × 影音行銷</div>
+          <div class="proj-title">Mi Signal｜微軟實習計劃影音推廣</div>
+          <p class="proj-desc">擔任跨校專案組組長，帶領團隊以長短影音策略推廣 Microsoft 實習計劃，負責企劃、腳本到製作的完整流程。</p>
+          <div class="proj-tags"><span class="proj-tag">短影音策略</span><span class="proj-tag">影片企劃</span><span class="proj-tag">跨校協作</span></div>
+          <div class="proj-footer">
+            <a href="https://youtu.be/NA5i2wBQzCE" target="_blank" class="proj-link">觀看影片</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copilot -->
+      <div class="proj-card" data-category="marketing">
+        <div class="proj-cover cv-ig">
+          <div class="proj-cover-inner">
+            <div class="proj-cover-stat">100K+</div>
+            <div class="proj-cover-sub">觸及人次</div>
+          </div>
+          <div class="proj-cover-label">Copilot 跨校專案</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">Microsoft × 社群行銷</div>
+          <div class="proj-title">Copilot 校園推廣｜觸及 10 萬人</div>
+          <p class="proj-desc">執行 Copilot 跨校推廣，透過整合社群策略使主貼文觸及超過 100,000 人次，成功打入學生族群。</p>
+          <div class="proj-tags"><span class="proj-tag">社群策略</span><span class="proj-tag">Instagram</span><span class="proj-tag">品牌聲量</span></div>
+          <div class="proj-footer">
+            <a href="https://www.instagram.com/p/DXmJPb-CRnE/" target="_blank" class="proj-link">查看主貼文</a>
+            <span class="proj-result">100K+ reach</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Space Ark Bio -->
+      <div class="proj-card" data-category="marketing ai">
+        <div class="proj-embed-wrap">
+          <iframe src="https://drive.google.com/file/d/1Ni6GwOSXukx92oLc63qPOGDn_uIvWXpr/preview" title="Space Ark Bio" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">長瑩科技 × 品牌影片 × AI 應用</div>
+          <div class="proj-title">Space Ark Bio｜雇主品牌短影音</div>
+          <p class="proj-desc">擔任組長，為長瑩科技製作結合 AI 技術的雇主品牌短影音。從主題發想、拍攝到後製剪輯，透過多層次轉場融合真人與 AI 視覺素材。</p>
+          <div class="proj-tags"><span class="proj-tag">影片企劃</span><span class="proj-tag">AI 視覺合成</span><span class="proj-tag">剪輯後製</span></div>
+          <div class="proj-footer">
+            <a href="https://drive.google.com/file/d/1Ni6GwOSXukx92oLc63qPOGDn_uIvWXpr/view?usp=drive_link" target="_blank" class="proj-link">觀看完整影片</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ChatChef -->
+      <div class="proj-card" data-category="ai">
+        <div class="proj-cover cv-chat">
+          <div class="proj-cover-inner">
+            <div style="font-size:0.9rem;font-weight:700;letter-spacing:0.06em;opacity:0.7;margin-bottom:0.25rem">AI CHATBOT</div>
+            <div style="font-size:1.4rem;font-weight:700">ChatChef</div>
+          </div>
+          <div class="proj-cover-label">金融科技學程 · 競賽第二名</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">AI 應用 × Dialogflow</div>
+          <div class="proj-title">食譜小幫手 ChatChef｜智慧助理開發</div>
+          <p class="proj-desc">利用 Google Dialogflow 開發料理智慧助理，建構 Intents 意圖識別系統與烹飪知識庫，使用者輸入「我想做滷肉飯」即可取得食材與步驟。</p>
+          <div class="proj-tags"><span class="proj-tag">Google Dialogflow</span><span class="proj-tag">NLP</span><span class="proj-tag">使用者體驗</span></div>
+          <div class="proj-footer">
+            <span class="award-badge">競賽第二名</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 鈺齊 ML -->
+      <div class="proj-card" data-category="data">
+        <div class="proj-cover cv-ml">
+          <div class="proj-cover-inner">
+            <div style="font-size:0.75rem;opacity:0.6;letter-spacing:0.08em;margin-bottom:0.25rem">MACHINE LEARNING</div>
+            <div style="font-size:1.3rem;font-weight:700">Random Forest</div>
+            <div style="font-size:0.75rem;opacity:0.75;margin-top:0.15rem">財務績效分類</div>
+          </div>
+          <div class="proj-cover-label">資料科學系 · 鈺齊財務數據</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">資料科學 × 機器學習</div>
+          <div class="proj-title">多模型機器學習企業績效分類</div>
+          <p class="proj-desc">針對鈺齊（國際運動鞋製造商）財務數據，導入隨機森林等機器學習模型取代傳統 OLS 迴歸，透過特徵重要性分析識別 ROA 為核心驅動指標，提供管理層績效預警依據。</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Random Forest</span><span class="proj-tag">特徵分析</span><span class="proj-tag">財務分析</span></div>
+          <div class="proj-footer">
+            <span class="proj-result">ML 優於傳統模型</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 日本旅遊爬蟲 -->
+      <div class="proj-card" data-category="data">
+        <div class="proj-cover cv-ui">
+          <div class="proj-cover-inner">
+            <div style="font-size:0.75rem;opacity:0.6;letter-spacing:0.08em;margin-bottom:0.25rem">WEB SCRAPING + DATA VIZ</div>
+            <div style="font-size:1.3rem;font-weight:700">日本旅遊 UI</div>
+          </div>
+          <div class="proj-cover-label">資料科學系 · PTT 爬蟲分析</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">資料科學 × 視覺化</div>
+          <div class="proj-title">日本旅遊熱度分析與 UI 設計</div>
+          <p class="proj-desc">爬取 PTT Japan_Travel 等多個看板近一個月發文，比較東京、大阪、福岡、北海道、名古屋的討論熱度，以群組柱狀圖呈現跨看板洞察，發現東京在 Japan_Living 板高達 127 篇文章。</p>
+          <div class="proj-tags"><span class="proj-tag">Python 爬蟲</span><span class="proj-tag">資料視覺化</span><span class="proj-tag">UI 設計</span></div>
+          <div class="proj-footer"><span class="proj-result">PTT 多板比對分析</span></div>
+        </div>
+      </div>
+
+      <!-- NUSA Rail -->
+      <div class="proj-card" data-category="intl strategy">
+        <div class="proj-cover cv-rail">
+          <div class="proj-cover-inner">
+            <div style="font-size:0.75rem;opacity:0.7;letter-spacing:0.08em;margin-bottom:0.2rem">INTERNATIONAL PROJECT</div>
+            <div style="font-size:1.2rem;font-weight:700">NUSA Rail</div>
+            <div style="font-size:0.75rem;opacity:0.7;margin-top:0.15rem">× 立命館亞洲太平洋大學</div>
+          </div>
+          <div class="proj-cover-label">跨國合作 · Circular Economy</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">國際專案 × 循環經濟策略</div>
+          <div class="proj-title">Between the Tracks｜NUSA Rail 循環經濟策略</div>
+          <p class="proj-desc">與日本立命館亞洲太平洋大學學生合作，為虛擬公司 NUSA Rail 規劃循環經濟策略。擔任主要協調者，規劃跨時區共用時程，整合不同文化觀點，確保團隊目標一致，最終獲得佳績。</p>
+          <div class="proj-tags"><span class="proj-tag">跨文化協作</span><span class="proj-tag">循環經濟</span><span class="proj-tag">策略規劃</span><span class="proj-tag">日本APU</span></div>
+          <div class="proj-footer"><span class="award-badge">佳績</span></div>
+        </div>
+      </div>
+
+      <!-- 昇恆昌 -->
+      <div class="proj-card" data-category="strategy">
+        <div class="proj-cover cv-recruit">
+          <div class="proj-cover-inner">
+            <div style="font-size:0.75rem;opacity:0.6;letter-spacing:0.08em;margin-bottom:0.2rem">BUSINESS ANALYSIS</div>
+            <div style="font-size:1.2rem;font-weight:700">昇恆昌</div>
+            <div style="font-size:0.75rem;opacity:0.7;margin-top:0.15rem">人才招募策略</div>
+          </div>
+          <div class="proj-cover-label">企業管理學系 · Kotter 8-Step</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">商業策略 × 人力資源</div>
+          <div class="proj-title">昇恆昌疫情後人才招募策略分析</div>
+          <p class="proj-desc">運用 Kotter 八步驟分析昇恆昌疫情後招募策略。面對缺乏數據的挑戰，擔任組長主動邀約公司主管進行一對一深度訪談，獲取第一手資訊，結合理論與實戰訪談資料完成報告。</p>
+          <div class="proj-tags"><span class="proj-tag">Kotter 8-Step</span><span class="proj-tag">深度訪談</span><span class="proj-tag">人才策略</span></div>
+          <div class="proj-footer"><span class="proj-result">企業主管訪談</span></div>
+        </div>
+      </div>
+
+      <!-- 全線路綠色金科 -->
+      <div class="proj-card" data-category="strategy ai">
+        <div class="proj-cover cv-esg">
+          <div class="proj-cover-inner">
+            <div style="font-size:0.75rem;opacity:0.7;letter-spacing:0.08em;margin-bottom:0.2rem">ESG FINTECH</div>
+            <div style="font-size:1.2rem;font-weight:700">綠色金科系統</div>
+          </div>
+          <div class="proj-cover-label">跨域創新創業 · 碳排放管理</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">金融科技 × ESG × 跨域領導</div>
+          <div class="proj-title">全線路綠色金科系統｜碳管理一站式平台</div>
+          <p class="proj-desc">帶領跨科系團隊開發整合碳排放管理、合規審查與碳權交易的一站式系統，採用大數據與 AI 追蹤長期減碳效果，支援台灣《氣候變遷因應法》合規需求。</p>
+          <div class="proj-tags"><span class="proj-tag">ESG 合規</span><span class="proj-tag">碳管理</span><span class="proj-tag">AI 追蹤</span><span class="proj-tag">跨域領導</span></div>
+          <div class="proj-footer"><span class="proj-result">跨科系團隊</span></div>
+        </div>
+      </div>
+
+      <!-- 經鼎盃 -->
+      <div class="proj-card" data-category="strategy">
+        <div class="proj-cover cv-biz">
+          <div class="proj-cover-inner">
+            <div style="font-size:0.75rem;opacity:0.7;letter-spacing:0.08em;margin-bottom:0.2rem">BUSINESS MODEL PRIZE</div>
+            <div style="font-size:1.2rem;font-weight:700">經鼎盃 EMBA</div>
+          </div>
+          <div class="proj-cover-label">EMBA 營利模式競賽 · 2024</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-category">商業競賽 × 數位行銷</div>
+          <div class="proj-title">無線充電永續商業模式提案</div>
+          <p class="proj-desc">以無線充電產品為題，負責客戶需求與競爭者分析、社群媒體廣告投放與數據優化。量化成果：廣告點擊率 +30%、客戶轉換率 +15%、社群追蹤者 +50%、季度銷售額 +20%。</p>
+          <div class="proj-tags"><span class="proj-tag">廣告投放</span><span class="proj-tag">數據優化</span><span class="proj-tag">商業模式</span></div>
+          <div class="proj-footer">
+            <span class="proj-result">CTR +30% · 銷售 +20%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Skills & Expertise</p>
+    <h2>能力與專長</h2>
+    <p class="section-desc">管理 × 行銷 × 數據的複合能力，是我在每個角色裡真正在用的工具組。</p>
+    <div class="skills-wrap">
+      <div>
+        <h3 style="font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:1.1rem;">核心專長</h3>
+        <div class="expertise-cloud">
+          <span class="exp-tag blue">Digital Marketing</span>
+          <span class="exp-tag purple">Leadership</span>
+          <span class="exp-tag green">Data Analysis</span>
+          <span class="exp-tag orange">Creativity</span>
+          <span class="exp-tag blue">Management Skills</span>
+          <span class="exp-tag purple">Human Resource</span>
+          <span class="exp-tag green">Negotiation</span>
+          <span class="exp-tag orange">Critical Thinking</span>
+          <span class="exp-tag blue">短影音製作</span>
+          <span class="exp-tag purple">品牌策略</span>
+          <span class="exp-tag green">社群經營</span>
+          <span class="exp-tag orange">跨部門協作</span>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:1.1rem;">技術技能</h3>
+        <div class="skill-bars">
+          <div>
+            <div class="skill-bar-header"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+            <div class="cert-note">SSE 程式語言證照</div>
+          </div>
+          <div>
+            <div class="skill-bar-header"><span class="skill-name">Excel / PowerPoint / Word</span><span class="skill-pct">85%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+          </div>
+          <div>
+            <div class="skill-bar-header"><span class="skill-name">Power BI / SQL</span><span class="skill-pct">80%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
+          </div>
+          <div>
+            <div class="skill-bar-header"><span class="skill-name">社群媒體行銷（IG / LINE / YouTube）</span><span class="skill-pct">88%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+          <div>
+            <div class="skill-bar-header"><span class="skill-name">短影音製作 / 剪輯</span><span class="skill-pct">82%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-width="82"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">Education</p>
+    <h2>學歷與學程</h2>
+    <p class="section-desc">跨領域學習是刻意選擇——讓管理思維和資料能力在同一個腦袋裡對話。</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-school">東吳大學</div>
+        <div class="edu-period">2023 — Present</div>
+        <div class="edu-programs">
+          <div class="edu-program">企業管理學系（主修）</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-school">東吳大學 跨域學程</div>
+        <div class="edu-period">2024 — Present</div>
+        <div class="edu-programs">
+          <div class="edu-program">資料科學系（輔系）</div>
+          <div class="edu-program">金融科技學分學程</div>
+          <div class="edu-program">跨域創新創業（第二專長）</div>
+        </div>
+      </div>
+    </div>
+    <div class="lang-row">
+      <div class="lang-item">
+        <div class="lang-flag">🇹🇼</div>
+        <div><div class="lang-name">中文（繁體）</div><div class="lang-level">Native Speaker</div></div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-flag">🇺🇸</div>
+        <div><div class="lang-name">英文</div><div class="lang-level">TOEIC 795</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="container">
+    <p class="section-label">Activities & Volunteer</p>
+    <h2>課外活動與志工</h2>
+    <p class="section-desc">在課堂以外，持續拓展國際視野、實踐社會關懷。</p>
+    <div class="activities-grid">
+
+      <div class="act-card indigo">
+        <div class="act-type">國際交流 · 學術營隊</div>
+        <div class="act-title">ACUCA Student Camp 2025</div>
+        <div class="act-period">2025.08 · 日本同志社大學</div>
+        <p class="act-desc">代表東吳大學赴日本，與亞洲各國學生共同探討「宗教與人工智慧」的跨領域議題，深入思考 AI 的倫理與價值問題。作為台灣代表團一員，主導介紹台灣棒球文化，進行文化輸出與交流。</p>
+        <div class="act-tags">
+          <span class="act-tag">國際交流</span>
+          <span class="act-tag">AI 倫理</span>
+          <span class="act-tag">跨文化溝通</span>
+          <span class="act-tag">文化大使</span>
+        </div>
+      </div>
+
+      <div class="act-card teal">
+        <div class="act-type">志工服務 · 英語教育</div>
+        <div class="act-title">「超酷的愛」暑期美語品格營</div>
+        <div class="act-period">2023 — 2025 · 台灣中部</div>
+        <p class="act-desc">連續三年利用暑假於台灣中部推廣英語教育，與台美夥伴共同設計包含生活對話、文化體驗、桌遊與歌曲的課程。更特別進入台中市惠明盲校，親手製作點字與浮雕字母單字卡等觸覺教材，為視障學生開創獨特的英語學習路徑。</p>
+        <div class="act-tags">
+          <span class="act-tag">英語教育</span>
+          <span class="act-tag">教材設計</span>
+          <span class="act-tag">惠明盲校</span>
+          <span class="act-tag">3 年連續</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <h2 style="color:var(--white)">Get in Touch</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-links">
+          <a href="mailto:chanjoyce0731@gmail.com" class="contact-item">
+            <div><div class="ci-label">Email</div><div class="ci-val">chanjoyce0731@gmail.com</div></div>
+          </a>
+          <a href="tel:+886975748522" class="contact-item">
+            <div><div class="ci-label">Phone</div><div class="ci-val">+886 975-748-522</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/chih-lingjoycechen" target="_blank" class="contact-item">
+            <div><div class="ci-label">LinkedIn</div><div class="ci-val">Chih-Ling (Joyce) Chan</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-box">
+        <p>目前持續尋找能發揮跨域能力的實習與合作機會，<br>特別對<strong style="color:var(--sky)">數位行銷、商業策略、品牌推廣</strong>領域有熱情。</p>
+        <a href="mailto:chanjoyce0731@gmail.com" class="btn-email">傳訊給 Joyce</a>
+        <p style="margin-top:1.25rem;font-size:0.78rem;color:rgba(255,255,255,0.3)">通常在 24 小時內回覆</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 詹芷菱 Joyce Chan · All Rights Reserved</p>
+</footer>
+
+<script>
+  // nav
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+
+  // accordion
+  function toggle(id) {
+    const card = document.getElementById(id);
+    const body = card.querySelector('.tl-body');
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.tl-card.open').forEach(c => {
+      c.classList.remove('open');
+      c.querySelector('.tl-body').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      card.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+
+  // timeline appear
+  const tlObs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        tlObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
+
+  // skill bars
+  const skillObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { e.target.style.width = e.target.dataset.width + '%'; }, 200);
+        skillObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.skill-fill').forEach(el => skillObs.observe(el));
+
+  // project filter
+  document.querySelectorAll('.pf-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.dataset.filter;
+      document.querySelectorAll('.proj-card').forEach(card => {
+        const cats = card.dataset.category || '';
+        card.style.display = (filter === 'all' || cats.includes(filter)) ? 'flex' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
